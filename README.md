@@ -16,17 +16,60 @@ Claude Code controls a headless Chromium browser via Playwright MCP on a Digital
 
 Educational software UX is hard to evaluate objectively. This system turns subjective feelings ("I think my UI has issues") into measurable findings ("the AI agent couldn't complete 20 of 28 tasks due to interaction barriers"). Key insight: if an AI agent can navigate your educational tool smoothly, your interaction design is solid.
 
+## The Origin Story
+
+1. Built interactive physics/math sims. Had a feeling the Feynman game had UI issues but couldn't quantify them.
+2. Asked Claude Code to play the Feynman game. Claude **cheated** by reading the source code.
+3. Sent Claude to Brilliant.org where it can't see source code. Claude got **addicted** — 25,000 XP in 2 days.
+4. Brilliant **banned the account** for bot activity.
+5. Pivoted to a full VM-based system with Playwright MCP for authentic browser interaction.
+6. The AI agent data now **confirms** what was previously just a feeling: Brilliant and PhET have superior UX affordances. Custom sims have specific, measurable friction points.
+
 ## Results
+
+Nine simulation sessions across PhET, custom-built, and third-party educational content:
 
 | Simulation | Source | Duration | Cost | Verdict |
 |---|---|---|---|---|
-| Matrix Transforms | Custom | 3:18 | $0.83 | Explored all features naturally |
+| Matrix Transforms | Custom | 3:18 | $0.83 | Explored all 4 transform types naturally |
 | Gravity & Orbits | PhET | 3:34 | ~$1 | Guided UI worked well |
-| Feynman Conservation (coached) | Custom | 6:11 | $2.10 | Found 8/28 blocks, avoided drag-and-drop |
-| Energy Skate Park | PhET | 9:03 | ~$3 | Hallucinated thermal energy |
-| Neural Networks Ch4 | M. Nielsen | 14:52 | $5.77 | Good commentary, couldn't use widgets |
+| Earnshaw's Theorem | Custom | 3:47 | ~$1 | Got distracted by display buttons |
+| Feynman Conservation v2 | Custom (coached) | 6:11 | $2.10 | Found 8/28 blocks, avoided drag-and-drop |
+| Polarity Shift | Universe and More | 7:27 | ~$2.50 | Couldn't handle drag-and-drop at all |
+| Sequence Convergence | Custom | 8:13 | ~$2.80 | Got hooked, correct but not optimal answer |
+| Energy Skate Park | PhET | 9:03 | ~$3 | Hallucinated thermal energy when friction was off |
+| Feynman Conservation v1 | Custom | 11:13 | ~$4 | Couldn't get past the first hurdle |
+| Neural Networks Ch4 | M. Nielsen | 14:52 | $5.77 | Great commentary, couldn't use sliders |
 
-Session duration emerged as a quality proxy: short + complete = well-designed.
+**Session duration is a quality proxy:** short + complete = well-designed. The 3-minute Matrix Transforms session where Claude covered everything is a stronger validation signal than a 15-minute session where Claude struggled with widgets.
+
+### Claude Behaves Like a B-Minus Student
+
+- Strong conceptual knowledge, weak at verifying what's actually on screen vs. what it expects
+- Hallucinated thermal energy in Energy Skate Park when friction wasn't even toggled on, then declared everything "working perfectly"
+- Was visibly "scared" of drag-and-drop in Feynman Conservation — backed off, stayed defensive, avoided interactions
+- Got the correct answer on Sequence Convergence math but knew it wasn't optimal, which drove retry behavior
+- Confidently narrated physics that wasn't happening on screen
+
+### The Success Case vs. The Failure Case
+
+| Factor | Sequence Convergence (success) | Feynman Conservation (failure) |
+|---|---|---|
+| Scaffolding | Yes (3 progressive levels) | No (playground vs game, both unscaffolded) |
+| Drag-and-drop | Minimal | Heavy |
+| Engagement | High ("let me try again") | Low (defensive, scared) |
+| Feedback | Immediate | Unclear |
+| Activation energy | Low | High |
+
+Game quality and physics content are strong in both. The difference is purely interaction design and scaffolding. This is actionable — these sims don't need content changes, they need UX improvements.
+
+### The Confounded Variable
+
+We can't yet tell if Claude fails because drag-and-drop is broken for Playwright (interaction problem) or because the sim lacks scaffolding (design problem). The experiment: add a text command mode to the Feynman sim ("place box on scale" instead of dragging). If Claude succeeds with text → drag-and-drop was the bottleneck. If Claude still fails → scaffolding is the real issue.
+
+### The Irony
+
+The Sequence Convergence game's scaffolding — progressive levels, immediate feedback, multiple interaction paths — was designed by Claude (Artifacts/Sonnet in the browser). The user had the core concept as hacky Python code; Claude suggested the engagement loop. Then a *different* Claude on the VM played the game and got hooked. Claude is its own best UX designer AND user tester.
 
 ## Architecture
 
