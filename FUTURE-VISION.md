@@ -72,6 +72,124 @@ Previous attempts used screenshots described to sub-agents — a lossy translati
 
 ## Strategic Positioning
 
+### Novel Framing: Educational Sims as AI Benchmarks
+
+**The insight**: If PhET simulations were gamified with "correct and optimal answers," the Claude Game Player system naturally becomes a novel AI benchmark category.
+
+#### Why This Is Groundbreaking
+
+Existing AI benchmarks focus on text and code:
+- **Code**: HumanEval, MBPP (write functions from docstrings)
+- **Math**: MATH, GSM8K (solve word problems)
+- **Reasoning**: ARC, BIG-Bench (logical puzzles)
+- **Knowledge**: MMLU, TriviaQA (question answering)
+
+**What's missing**: Interactive spatial reasoning, UI interaction, learning from visual feedback, physical intuition, embodied problem-solving.
+
+Educational simulations fill this gap. They test capabilities that text-based benchmarks cannot:
+- **Spatial reasoning** — understanding 2D/3D transformations, trajectories, forces
+- **UI interaction** — navigating complex interfaces, finding relevant controls
+- **Learning from feedback** — adjusting strategy based on visual/interactive results
+- **Physical intuition** — predicting system behavior (gravity, energy, motion)
+- **Multi-step problem solving** — planning and executing sequences of actions
+- **Error recovery** — recognizing failures and trying alternative approaches
+
+#### Benchmark Dimensions
+
+Unlike pass/fail text benchmarks, educational sim benchmarks are multi-dimensional:
+
+| Dimension | Measurement | What It Tests |
+|-----------|-------------|---------------|
+| **Completion Rate** | Did the agent solve the puzzle? | Basic capability |
+| **Time to Solution** | How long did it take? | Efficiency and intuition |
+| **Exploration Quality** | Did it try all features? | Thoroughness and curiosity |
+| **Error Recovery** | How did it handle failed attempts? | Adaptability and learning |
+| **Conceptual Understanding** | Commentary analysis vs. correct answers | True comprehension vs. trial-and-error |
+| **Interaction Efficiency** | Number of clicks/actions per solve | Strategic thinking |
+
+This produces a **profile** of AI capability, not a single score. Different models might excel at different dimensions.
+
+#### Cross-Model Comparison
+
+The same educational sim can be played by:
+- Claude (all versions: Haiku, Sonnet, Opus)
+- GPT-4, GPT-4o, o1, o3
+- Gemini (all versions)
+- Open-source models (Llama, Qwen, DeepSeek)
+
+**Research questions**:
+- Which models have better spatial reasoning?
+- Which learn faster from interactive feedback?
+- Which models are more efficient (fewer actions to solution)?
+- How do reasoning models (o1, o3) compare to standard models on physics sims?
+
+#### Scalability Across Difficulty
+
+PhET has **160+ simulations** across:
+- Elementary school (counting, colors, shapes)
+- Middle school (basic physics, fractions)
+- High school (mechanics, circuits, chemistry)
+- Undergraduate (quantum mechanics, calculus)
+- Graduate level (advanced physics concepts)
+
+This provides a **curriculum of increasing difficulty** — like how MMLU spans topics from elementary to professional level. AI models can be benchmarked across the full spectrum.
+
+#### Standardization and Reproducibility
+
+For a benchmark to be valuable, it must be:
+1. **Reproducible** — same sim, same starting conditions, comparable results
+2. **Versioned** — PhET sims have stable versions
+3. **Publicly accessible** — PhET is open-source and free
+4. **Measurable** — clear success criteria (correct answers, completion, scores)
+5. **Representative** — correlates with real-world capabilities (using interactive software)
+
+The Claude Game Player pipeline already satisfies most of these. Adding gamification (scoring, optimal solutions) completes the picture.
+
+#### Target Audiences Expanded
+
+This framing opens up entirely new audiences beyond education companies:
+
+**AI Labs** (Anthropic, OpenAI, Google DeepMind):
+- Novel benchmark to add to their model cards
+- Tests capabilities not covered by text benchmarks
+- Competitive differentiation: "Our model is best at interactive reasoning"
+
+**AI Research Community** (NeurIPS, ICLR, ICML):
+- New benchmark category for papers
+- Research on embodied reasoning, spatial intelligence
+- Comparison studies across model families
+
+**NSF Grants** (CS + Education):
+- "Developing standardized benchmarks for AI spatial reasoning using educational simulations"
+- "Evaluating AI model capabilities on interactive STEM learning tasks"
+- More fundable than "building games" or even "validating games"
+
+**AI Benchmarking Platforms** (Papers with Code, HuggingFace):
+- Add "Interactive Educational Sims" as a new benchmark category
+- Leaderboards comparing models on PhET tasks
+
+#### Strategic Implications
+
+This reframing changes **everything**:
+
+**Before**: "I built a system to validate my educational games"
+- Audience: Education companies
+- Pitch: "Hire me to improve UX"
+- Competition: Other educators, UX researchers
+
+**After**: "I built a novel AI benchmark category using interactive educational simulations"
+- Audience: AI labs, research community, NSF
+- Pitch: "Here's a new way to evaluate AI capabilities that existing benchmarks miss"
+- Competition: None — genuinely first in this space
+
+**The key**: PhET already exists. The sims already have "correct" physics. The pipeline already works. The only addition needed is **gamification scoring** (which many PhET sims already partially have — "is the circuit complete?", "did the ball reach the target?").
+
+#### Positioning Statement
+
+*"Educational simulations represent an untapped category of AI benchmarks, testing spatial reasoning, UI interaction, and learning from feedback — capabilities poorly covered by text and code benchmarks. By gamifying PhET's 160+ open-source simulations and applying autonomous AI agents, we've created a scalable, reproducible benchmark suite that evaluates how AI models learn and solve interactive STEM problems."*
+
+This isn't just UX validation. **This is AI capability evaluation.**
+
 ### Part of a Larger Ecosystem
 This project isn't a standalone side project — it's the validation layer for an existing portfolio of 80+ interactive educational simulations. The arc:
 
